@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knitten</title>
+    <link rel="stylesheet" href="knitten.css">
+    <script defer src="knitten.js"></script>
+    <style>
+        /* Ek CSS için burada hızlı düzenleme */
+        .player-hand {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 10px;
+        }
+
+        .card {
+            width: 80px;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid black;
+            border-radius: 8px;
+        }
+
+        #board-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            background-color: lightgray;
+            border: 2px solid black;
+        }
+
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border: 1px solid gray;
+        }
+
+        .yarn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-size: cover;
+        }
+
+        #drawn-yarn-container {
+            margin-top: 20px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Knitten</h1>
+    <h2 id="score">Score: 0</h2>
+
+    <!-- Oyuncu Elleri -->
+    <h3>Player 1 Hand</h3>
+    <div id="player1-hand" class="player-hand"></div>
+    <h3>Player 2 Hand</h3>
+    <div id="player2-hand" class="player-hand"></div>
+
+    <!-- Kart Çekme Butonu -->
+    <button id="draw-card-btn">Draw Card</button>
+
+    <!-- Oyun Tahtası -->
+    <div id="board-container">
+        <div id="board"></div>
+        <div class="controls">
+            <button class="control-btn" data-direction="left" data-row="0">←</button>
+            <button class="control-btn" data-direction="left" data-row="1">←</button>
+            <button class="control-btn" data-direction="left" data-row="2">←</button>
+            <button class="control-btn" data-direction="right" data-row="0">→</button>
+            <button class="control-btn" data-direction="right" data-row="1">→</button>
+            <button class="control-btn" data-direction="right" data-row="2">→</button>
+            <button class="control-btn" data-direction="up" data-col="0">↑</button>
+            <button class="control-btn" data-direction="up" data-col="1">↑</button>
+            <button class="control-btn" data-direction="up" data-col="2">↑</button>
+            <button class="control-btn" data-direction="down" data-col="0">↓</button>
+            <button class="control-btn" data-direction="down" data-col="1">↓</button>
+            <button class="control-btn" data-direction="down" data-col="2">↓</button>
+        </div>
+    </div>
+
+    <!-- Yumak Çekme Butonu -->
+    <button id="draw-yarn-btn">Draw Yarn</button>
+    <div id="drawn-yarn-container"></div>
+</body>
+</html>
